@@ -19,6 +19,7 @@ class Utilisateur(db.Model):
 # Crée les tables si elles n'existent pas
 with app.app_context():
     db.create_all()
+    print("La bd a été crée normalement.")
 
 @app.route("/")
 def index():
