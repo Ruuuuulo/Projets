@@ -6,6 +6,10 @@
 <body>
     {% if session.user_id %}
     <p>Bienvenue ! Vous êtes connecté. ID : {{session['user_id']}}</p>
+    <a href="/deconnexion">Se déconnecter</a>
+    {% endif %}
+    {% if not session.user_id %}
+    <a href="/connexion">Se connecter</a>
     {% endif %}
     <h1>Bonjour depuis Flask !</h1>
     <a href="https://react-app-s1pa.onrender.com/">Chat'bruti</a>

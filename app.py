@@ -25,8 +25,6 @@ with app.app_context():
 
 @app.route("/")
 def index():
-    if "user_id" not in session:
-        return redirect(url_for("connexion"))
     return render_template("index.html")
 
 @app.route("/inscription", methods=["GET", "POST"])
