@@ -48,7 +48,7 @@ def inscription():
         db.session.add(user)
         db.session.commit()
 
-        return redirect(url_for("login"))
+        return redirect(url_for("connexion"))
 
     return render_template("inscription.html")
 
