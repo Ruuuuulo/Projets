@@ -53,8 +53,8 @@ def inscription():
     return render_template("register.html")
 
 
-@app.route("/login", methods=["GET", "POST"])
-def login():
+@app.route("/connexion", methods=["GET", "POST"])
+def connexion():
     if request.method == "POST":
         email = request.form["email"]
         mdp = request.form["mdp"]
