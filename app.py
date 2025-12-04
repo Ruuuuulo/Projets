@@ -73,5 +73,11 @@ def connexion():
 
     return render_template("connexion.html")
 
+@app.route("/deconnexion")
+def deconnexion():
+    if "user_id" in session:
+        session.pop()
+    return redirect(url_for("connexion"))
+
 if __name__ == "__main__":
     app.run()
