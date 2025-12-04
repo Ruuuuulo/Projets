@@ -1,4 +1,5 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request, jsonify
+
 from flask_sqlalchemy import SQLAlchemy
 import os
 
@@ -33,6 +34,11 @@ def react_app(path):
         return send_from_directory(app.static_folder, path)
     else:
         return send_from_directory(app.static_folder, "index.html")
+    
+@app.route("/api/key", methods=["GET"])
+def get_key():
+    api_key = os.getenv("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")  # récupère la clé depuis l'env
+    return jsonify({"api_key": api_key})
 
 if __name__ == "__main__":
     app.run()
