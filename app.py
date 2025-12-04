@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="dist")
 
 # Récupère l'URL depuis les variables d'environnement
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
@@ -24,6 +24,15 @@ with app.app_context():
 @app.route("/")
 def index():
     return render_template("index.html")
+
+# Routes React
+@app.route("/app", defaults={"path": ""})
+@app.route("/app/<path:path>")
+def react_app(path):
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, "index.html")
 
 if __name__ == "__main__":
     app.run()
