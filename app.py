@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 import os
 
@@ -22,7 +22,7 @@ with app.app_context():
 
 @app.route("/")
 def index():
-    return {"message": "Hello depuis Flask sur Render !"}
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run()
