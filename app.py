@@ -1,9 +1,11 @@
-from flask import Flask, render_template, send_from_directory, request, jsonify
+from flask import Flask, render_template, session, redirect, url_for, request
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__, static_folder="dist")
+app.secret_key = os.getenv("SECRET_KEY")
 
 # Récupère l'URL depuis les variables d'environnement
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
@@ -24,21 +26,52 @@ with app.app_context():
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+    return f"Bienvenue ! Vous êtes connecté. ID : {session['user_id']}"
 
-# Routes React
-@app.route("/app", defaults={"path": ""})
-@app.route("/app/<path:path>")
-def react_app(path):
-    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
-        return send_from_directory(app.static_folder, path)
-    else:
-        return send_from_directory(app.static_folder, "index.html")
-    
-@app.route("/api/key", methods=["GET"])
-def get_key():
-    api_key = os.getenv("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")  # récupère la clé depuis l'env
-    return jsonify({"api_key": api_key})
+@app.route("/inscription", methods=["GET", "POST"])
+def inscription():
+    if request.method == "POST":
+        email = request.form["email"]
+        mdp = request.form["mdp"]
+
+        # Vérifie si l’utilisateur existe déjà
+        existing_user = Utilisateur.query.filter_by(email=email).first()
+        if existing_user:
+            return "Cet email existe déjà."
+
+        # Hash du mot de passe
+        hashed = generate_password_hash(mdp)
+
+        user = Utilisateur(email=email, mdp=hashed)
+        db.session.add(user)
+        db.session.commit()
+
+        return redirect(url_for("login"))
+
+    return render_template("register.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.form["email"]
+        mdp = request.form["mdp"]
+
+        user = Utilisateur.query.filter_by(email=email).first()
+        if not user:
+            return "Utilisateur introuvable."
+
+        if not check_password_hash(user.mdp, mdp):
+            return "Mot de passe incorrect."
+
+        # Création de la session
+        session["user_id"] = user.id
+
+        return redirect(url_for("index"))
+
+    return render_template("login.html")
 
 if __name__ == "__main__":
     app.run()
