@@ -27,7 +27,7 @@ with app.app_context():
 @app.route("/")
 def index():
     if "user_id" not in session:
-        return redirect(url_for("login"))
+        return redirect(url_for("connexion"))
     return f"Bienvenue ! Vous êtes connecté. ID : {session['user_id']}"
 
 @app.route("/inscription", methods=["GET", "POST"])
@@ -50,7 +50,7 @@ def inscription():
 
         return redirect(url_for("login"))
 
-    return render_template("register.html")
+    return render_template("inscription.html")
 
 
 @app.route("/connexion", methods=["GET", "POST"])
@@ -71,7 +71,7 @@ def connexion():
 
         return redirect(url_for("index"))
 
-    return render_template("login.html")
+    return render_template("connexion.html")
 
 if __name__ == "__main__":
     app.run()
