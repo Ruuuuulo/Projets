@@ -27,7 +27,7 @@ with app.app_context():
 def index():
     if "user_id" not in session:
         return redirect(url_for("connexion"))
-    return f"Bienvenue ! Vous êtes connecté. ID : {session['user_id']}"
+    return render_template("index.html")
 
 @app.route("/inscription", methods=["GET", "POST"])
 def inscription():

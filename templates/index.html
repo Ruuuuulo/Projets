@@ -4,6 +4,9 @@
     <title>Page HTML Flask</title>
 </head>
 <body>
+    {% if session.user_id %}
+    <p>Bienvenue ! Vous êtes connecté. ID : {{session['user_id']}}</p>
+    {% endif %}
     <h1>Bonjour depuis Flask !</h1>
     <a href="https://react-app-s1pa.onrender.com/">Chat'bruti</a>
 </body>
