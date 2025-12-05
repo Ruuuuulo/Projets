@@ -50,6 +50,8 @@ def index():
 
 @app.route("/inscription", methods=["GET", "POST"])
 def inscription():
+    if "user_id" in session:
+        redirect(url_for('index'))
     if request.method == "POST":
         # Validation email
         try:
@@ -89,6 +91,8 @@ def inscription():
 
 @app.route("/connexion", methods=["GET", "POST"])
 def connexion():
+    if "user_id" in session:
+        redirect(url_for('index'))
     if request.method == "POST":
 
         email = request.form["email"]
