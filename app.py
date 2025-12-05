@@ -55,12 +55,12 @@ def inscription():
         try:
             email = validate_email(request.form["email"]).normalized
         except EmailNotValidError:
-            return "Email invalide."
+            return render_template("inscription.html", message="L'email est invalide.")
 
         mdp = request.form["mdp"]
         mdp2 = request.form["mdp2"]
         if mdp != mdp2:
-            return "Les mdp sont différents."
+            return render_template("inscription.html", message="Les mots de passes doivent être identiques.")
         # Vérification du mot de passe
         pattern = (
             r'^(?=.*[A-Z])'         # 1 majuscule
@@ -75,7 +75,7 @@ def inscription():
         # Vérifie si déjà inscrit
         existing_user = Utilisateur.query.filter_by(email=email).first()
         if existing_user:
-            return "Cet email existe déjà."
+            return render_template("inscription.html", message="L'email est déjà utilisé.")
 
         hashed = generate_password_hash(mdp, method="pbkdf2:sha256:260000")
 
@@ -90,13 +90,14 @@ def inscription():
 @app.route("/connexion", methods=["GET", "POST"])
 def connexion():
     if request.method == "POST":
+
         email = request.form["email"]
         mdp = request.form["mdp"]
 
         user = Utilisateur.query.filter_by(email=email).first()
 
         if not user or not check_password_hash(user.mdp, mdp):
-            return "Identifiants invalides."
+            return render_template("connexion.html", message="Identifiants invalides.")
 
         session["user_id"] = user.id
         return redirect(url_for("index"))

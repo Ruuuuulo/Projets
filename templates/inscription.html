@@ -10,8 +10,8 @@
         .form-input:focus{border-color:var(--accent-color);outline:none;box-shadow:0 0 0 3px var(--accent-glow)}
         .login-btn{width:100%;padding:14px;background:var(--accent-color);color:#fff;font-size:1.1rem;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:all .3s ease;margin-top:10px}
         .login-btn:hover{background:#ff3a39;transform:translateY(-2px);box-shadow:0 8px 20px var(--accent-glow)}
-        .success-message{background:#22c55e;color:#fff;padding:12px;border-radius:8px;margin-bottom:20px;text-align:center;font-weight:600;display:none}
-        .success-message.show{display:block;animation:fadeIn .5s}
+        .error-message{background:#ff3a39;color:#fff;padding:12px;border-radius:8px;margin-bottom:20px;text-align:center;font-weight:600}
+        .error-message.show{display:block;animation:shake .5s}
         @keyframes fadeIn{0%{opacity:0;transform:translateY(-10px)}100%{opacity:1;transform:translateY(0)}}
         .back-link{text-align:center;margin-top:20px}
         .back-link a{color:var(--accent-color);text-decoration:none;font-weight:600;transition:color .3s ease;cursor:pointer}
@@ -19,7 +19,9 @@
     </style>
         <div class="login-container">
             <h1 class="login-title">Inscription</h1>
-            <!-- <div class="success-message" id="success-message">Inscription réussie !</div> -->
+            {% if message %}
+                <div class="error-message" id="error-message">{{message}}</div>
+            {% endif %}
             <form action="/inscription" method="POST">
                 <div class="form-group">
                     <label class="form-label" for="username">Email</label>

@@ -31,10 +31,17 @@
                             <li><a class="dropdown-link" href="#" data-testid="defi-6">Défi 6</a></li>
                         </ul>
                     </div>
+                    {% if session.user_id %}
+                    <a class="nav-button" href="/deconnexion" data-testid="login-link">
+                        <span class="nav-text">Se déconnecter</span>
+                        <span class="nav-underline"></span>
+                    </a>
+                    {% else %}
                     <a class="nav-button" href="/connexion" data-testid="login-link">
                         <span class="nav-text">Se connecter</span>
                         <span class="nav-underline"></span>
                     </a>
+                    {% endif %}
                     <a class="nav-button" href="#" data-testid="about-link">
                         <span class="nav-text">Qui sommes-nous</span>
                         <span class="nav-underline"></span>

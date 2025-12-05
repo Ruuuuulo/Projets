@@ -10,7 +10,7 @@
         .form-input:focus{border-color:var(--accent-color);outline:none;box-shadow:0 0 0 3px var(--accent-glow)}
         .login-btn{width:100%;padding:14px;background:var(--accent-color);color:#fff;font-size:1.1rem;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:all .3s ease;margin-top:10px}
         .login-btn:hover{background:#ff3a39;transform:translateY(-2px);box-shadow:0 8px 20px var(--accent-glow)}
-        .error-message{background:#ff3a39;color:#fff;padding:12px;border-radius:8px;margin-bottom:20px;text-align:center;font-weight:600;display:none}
+        .error-message{background:#ff3a39;color:#fff;padding:12px;border-radius:8px;margin-bottom:20px;text-align:center;font-weight:600}
         .error-message.show{display:block;animation:shake .5s}
         @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
         .back-link{text-align:center;margin-top:20px}
@@ -19,7 +19,9 @@
     </style>
         <div class="login-container">
             <h1 class="login-title">Connexion</h1>
-            <!-- <div class="error-message" id="error-message">Identifiant ou mot de passe incorrect</div> -->
+            {% if message %}
+                <div class="error-message" id="error-message">{{message}}</div>
+            {% endif %}
             <form action="/connexion" method="POST">
                 <div class="form-group">
                     <label class="form-label" for="username">Email</label>
