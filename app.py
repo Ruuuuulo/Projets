@@ -70,7 +70,7 @@ def inscription():
         )
 
         if not re.match(pattern, mdp):
-            render_template("inscription.html", message="8 caractères min | 1 majuscule | 1 chiffre | 1 caractère spécial")
+            return render_template("inscription.html", message="8 caractères min | 1 majuscule | 1 chiffre | 1 caractère spécial")
 
         # Vérifie si déjà inscrit
         existing_user = Utilisateur.query.filter_by(email=email).first()
