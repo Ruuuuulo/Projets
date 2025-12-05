@@ -1,107 +1,158 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Inscription</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription | Nuit Info</title>
+    <link href="style.css" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Poppins", Arial, sans-serif;
-            background: linear-gradient(135deg, #880e4f, #4a148c);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-        }
-
-        .register-container {
-            background: rgba(255, 255, 255, 0.12);
-            padding: 40px;
-            border-radius: 20px;
-            width: 350px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 0.7s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 25px;
-            font-weight: 600;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px 15px;
-            margin-bottom: 15px;
-            border: none;
-            border-radius: 12px;
-            font-size: 15px;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        input:focus {
-            box-shadow: 0 0 8px #f8bbd0;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #ad1457;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: 600;
-        }
-
-        button:hover {
-            background: #880e4f;
-        }
-
-        .link {
-            margin-top: 15px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .link a {
-            color: #ffd1ff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .link a:hover {
-            text-decoration: underline;
-        }
+        .login-container{max-width:450px;margin:80px auto;padding:40px;background:var(--bg-secondary);border-radius:20px;box-shadow:0 20px 60px var(--shadow-color);border:2px solid var(--accent-color)}
+        .login-title{font-size:2.2rem;font-weight:900;text-align:center;margin-bottom:30px;background:linear-gradient(135deg,var(--accent-color),#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .form-group{margin-bottom:20px}
+        .form-label{display:block;font-weight:600;margin-bottom:8px;color:var(--text-primary);font-size:1rem}
+        .form-input{width:100%;padding:12px 15px;border:2px solid var(--shadow-color);border-radius:10px;font-size:1rem;background:var(--bg-primary);color:var(--text-primary);transition:all .3s ease}
+        .form-input:focus{border-color:var(--accent-color);outline:none;box-shadow:0 0 0 3px var(--accent-glow)}
+        .login-btn{width:100%;padding:14px;background:var(--accent-color);color:#fff;font-size:1.1rem;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:all .3s ease;margin-top:10px}
+        .login-btn:hover{background:#ff3a39;transform:translateY(-2px);box-shadow:0 8px 20px var(--accent-glow)}
+        .success-message{background:#22c55e;color:#fff;padding:12px;border-radius:8px;margin-bottom:20px;text-align:center;font-weight:600;display:none}
+        .success-message.show{display:block;animation:fadeIn .5s}
+        @keyframes fadeIn{0%{opacity:0;transform:translateY(-10px)}100%{opacity:1;transform:translateY(0)}}
+        .back-link{text-align:center;margin-top:20px}
+        .back-link a{color:var(--accent-color);text-decoration:none;font-weight:600;transition:color .3s ease;cursor:pointer}
+        .back-link a:hover{color:#764ba2}
     </style>
 </head>
 <body>
-
-<div class="register-container">
-    <h2>Créer un compte</h2>
-
-    <form action="/inscription" method="POST">
-        <input type="email" name="email" placeholder="Adresse email" required>
-        <input type="password" name="mdp" placeholder="Mot de passe" required>
-        <button type="submit">S'inscrire</button>
-    </form>
-
-    <div class="link">
-        Déjà un compte ? <a href="/connexion">Connexion</a>
-    </div>
-</div>
-
+    <header>
+        <div class="header-container">
+            <div class="header-left">
+                <img src="unGroupeRandomImage.jpg" id="main-logo" alt="Un Groupe Random Logo" loading="lazy">
+                <h1 class="glitch-title" data-text="Groupe Random">Groupe Random</h1>
+            </div>
+            <nav class="header-right">
+                <div class="nav-grid">
+                    <a class="nav-button" href="index.html" data-testid="accueil-link">
+                        <span class="nav-text">Accueil</span>
+                        <span class="nav-underline"></span>
+                    </a>
+                    <div class="nav-button dropdown-trigger" data-testid="defis-menu">
+                        <span class="nav-text">Défis</span>
+                        <span class="nav-underline"></span>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-link" href="defi1.html" data-testid="defi-1">Défi 1 - Femmes et informatique</a></li>
+                            <li><a class="dropdown-link" href="#" data-testid="defi-2">Défi 2</a></li>
+                            <li><a class="dropdown-link" href="#" data-testid="defi-3">Défi 3</a></li>
+                            <li><a class="dropdown-link" href="#" data-testid="defi-4">Défi 4</a></li>
+                            <li><a class="dropdown-link" href="#" data-testid="defi-5">Défi 5</a></li>
+                            <li><a class="dropdown-link" href="#" data-testid="defi-6">Défi 6</a></li>
+                        </ul>
+                    </div>
+                    <a class="nav-button" href="login.html" data-testid="login-link">
+                        <span class="nav-text">Se connecter</span>
+                        <span class="nav-underline"></span>
+                    </a>
+                    <a class="nav-button" href="#" data-testid="about-link">
+                        <span class="nav-text">Qui sommes-nous</span>
+                        <span class="nav-underline"></span>
+                    </a>
+                </div>
+            </nav>
+            <div class="theme-toggle-wrapper">
+                <input type="checkbox" id="theme-toggle" class="theme-checkbox">
+                <label for="theme-toggle" class="theme-label">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                    <div class="toggle-ball"></div>
+                </label>
+                <div class="gif-container">
+                    <img src="image_anime.gif" alt="Animation" class="gif-loader" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="corps">
+        <div class="login-container">
+            <h1 class="login-title">Inscription</h1>
+            <div class="success-message" id="success-message">Inscription réussie !</div>
+            <form id="inscription-form" onsubmit="return handleInscription(event)">
+                <div class="form-group">
+                    <label class="form-label" for="username">Email</label>
+                    <input type="email" id="username" name="username" class="form-input" placeholder="Entrez votre email" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" class="form-input" placeholder="Entrez votre mot de passe" required autocomplete="new-password">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="confirm-password">Confirmer le mot de passe</label>
+                    <input type="password" id="confirm-password" name="confirm-password" class="form-input" placeholder="Confirmez votre mot de passe" required autocomplete="new-password">
+                </div>
+                <button type="submit" class="login-btn" data-testid="inscription-submit-btn">S'inscrire</button>
+            </form>
+            <div class="back-link">
+                <a href="login.html">Déjà un compte ? Connectez-vous</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-logo-container">
+            <img src="unGroupeRandomImage.jpg" class="footer-logo" alt="Un Groupe Random Logo" loading="lazy">
+        </div>
+        <div class="footer-container">
+            <div class="footer-column footer-left">
+                <ul class="team-list">
+                    <li class="team-member">LALEURE Yoann</li>
+                    <li class="team-member">BENAISSE Mohamed</li>
+                    <li class="team-member">BOURDIOL Maxime</li>
+                    <li class="team-member">BRU Nolann</li>
+                    <li class="team-member">ETTARFAOUI Abdelrahni</li>
+                    <li class="team-member">FERREIRA Diego</li>
+                </ul>
+            </div>
+            <div class="footer-column footer-center">
+                <h2 class="footer-main-title animated-gradient">Un groupe Random</h2>
+                <p class="footer-year">Nuit de l'Info 2025</p>
+            </div>
+            <div class="footer-column footer-right">
+                <ul class="team-list">
+                    <li class="team-member">GABARRE CLAVERIA Santiago</li>
+                    <li class="team-member">GAUCHET Killian</li>
+                    <li class="team-member">KIRUPAKARAN Kirthigane</li>
+                    <li class="team-member">LUCAS Clément</li>
+                    <li class="team-member">OUAKAR Nour</li>
+                    <li class="team-member">SAUVAGE Savannah</li>
+                    <li class="team-member">TRANIER Malo</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Groupe Random - Tous droits réservés</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        function handleInscription(event) {
+            event.preventDefault();
+            const email = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const successMessage = document.getElementById('success-message');
+            
+            // Simple validation - pas de BD derrière
+            if (password !== confirmPassword) {
+                alert('Les mots de passe ne correspondent pas !');
+                return false;
+            }
+            
+            // Affiche un message de succès (pas de vraie inscription)
+            successMessage.classList.add('show');
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+                alert('✅ Inscription simulée réussie ! Redirection vers la connexion...');
+                window.location.href = 'login.html';
+            }, 1500);
+            return false;
+        }
+    </script>
 </body>
 </html>
