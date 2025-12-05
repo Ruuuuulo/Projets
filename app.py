@@ -114,7 +114,7 @@ def defi1():
     return render_template("defi1.html")
 
 @app.route("/quisommesnous")
-def defi1():
+def quisommesnous():
     return render_template("quisommesnous.html")
 
 if __name__ == "__main__":
