@@ -42,6 +42,7 @@ class Utilisateur(db.Model):
     mdp = db.Column(db.String(255), nullable=False)
 
 with app.app_context():
+    db.drop_all()
     db.create_all()
 
 @app.route("/")
@@ -51,8 +52,9 @@ def index():
 @app.route("/inscription", methods=["GET", "POST"])
 def inscription():
     if "user_id" in session:
-        redirect(url_for('index'))
+        return redirect(url_for('index'))
     if request.method == "POST":
+
         # Validation email
         try:
             email = validate_email(request.form["email"]).normalized
@@ -63,6 +65,7 @@ def inscription():
         mdp2 = request.form["mdp2"]
         if mdp != mdp2:
             return render_template("inscription.html", message="Les mots de passes doivent être identiques.")
+        
         # Vérification du mot de passe
         pattern = (
             r'^(?=.*[A-Z])'         # 1 majuscule
@@ -92,7 +95,7 @@ def inscription():
 @app.route("/connexion", methods=["GET", "POST"])
 def connexion():
     if "user_id" in session:
-        redirect(url_for('index'))
+        return redirect(url_for('index'))
     if request.method == "POST":
 
         email = request.form["email"]
@@ -123,3 +126,5 @@ def quisommesnous():
 
 if __name__ == "__main__":
     app.run()
+
+#BACKEND CODE PAR GABARRE CLAVERIA Santiago
