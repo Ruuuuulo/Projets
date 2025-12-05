@@ -6,7 +6,7 @@ from email_validator import validate_email, EmailNotValidError
 import os
 import re
 
-app = Flask(__name__, static_folder="dist")
+app = Flask(__name__)
 
 # Secret key obligatoire
 app.secret_key = os.getenv("SECRET_KEY")
