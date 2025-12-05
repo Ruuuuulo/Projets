@@ -58,6 +58,9 @@ def inscription():
             return "Email invalide."
 
         mdp = request.form["mdp"]
+        mdp2 = request.form["mdp2"]
+        if mdp != mdp2:
+            return "Les mdp sont différents."
         # Vérification du mot de passe
         pattern = (
             r'^(?=.*[A-Z])'         # 1 majuscule

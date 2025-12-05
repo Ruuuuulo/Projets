@@ -23,16 +23,16 @@
             <form action="/connexion" method="POST">
                 <div class="form-group">
                     <label class="form-label" for="username">Email</label>
-                    <input type="text" id="username" name="username" class="form-input" placeholder="Entrez votre email" required autocomplete="username">
+                    <input type="text" id="email" name="email" class="form-input" placeholder="Entrez votre email" required autocomplete="username">
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="password">Mot de passe</label>
-                    <input type="password" id="password" name="password" class="form-input" placeholder="Entrez votre mot de passe" required autocomplete="current-password">
+                    <input type="password" id="mdp" name="mdp" class="form-input" placeholder="Entrez votre mot de passe" required autocomplete="current-password">
                 </div>
                 <button type="submit" class="login-btn" data-testid="login-submit-btn">Se connecter</button>
             </form>
             <div class="back-link">
-                <a href="inscription.html">Pas de compte ? Inscrivez-vous</a>
+                <a href="/inscription">Pas de compte ? Inscrivez-vous</a>
             </div>
         </div>
 {% endblock %}
