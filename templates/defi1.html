@@ -1,60 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Défi 1 - Femmes et informatique | Nuit Info</title>
-    <link href="style.css" rel="stylesheet">
-</head>
-<body>
-    <header>
-        <div class="header-container">
-            <div class="header-left">
-                <img src="unGroupeRandomImage.jpg" id="main-logo" alt="Un Groupe Random Logo" loading="lazy">
-                <h1 class="glitch-title" data-text="Groupe Random">Groupe Random</h1>
-            </div>
-            <nav class="header-right">
-                <div class="nav-grid">
-                    <a class="nav-button" href="index.html" data-testid="accueil-link">
-                        <span class="nav-text">Accueil</span>
-                        <span class="nav-underline"></span>
-                    </a>
-                    <div class="nav-button dropdown-trigger" data-testid="defis-menu">
-                        <span class="nav-text">Défis</span>
-                        <span class="nav-underline"></span>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-link" href="defi1.html" data-testid="defi-1">Défi 1 - Femmes et informatique</a></li>
-                            <li><a class="dropdown-link" href="#" data-testid="defi-2">Défi 2</a></li>
-                            <li><a class="dropdown-link" href="#" data-testid="defi-3">Défi 3</a></li>
-                            <li><a class="dropdown-link" href="#" data-testid="defi-4">Défi 4</a></li>
-                            <li><a class="dropdown-link" href="#" data-testid="defi-5">Défi 5</a></li>
-                            <li><a class="dropdown-link" href="#" data-testid="defi-6">Défi 6</a></li>
-                        </ul>
-                    </div>
-                    <a class="nav-button" href="login.html" data-testid="login-link">
-                        <span class="nav-text">Se connecter</span>
-                        <span class="nav-underline"></span>
-                    </a>
-                    <a class="nav-button" href="#" data-testid="about-link">
-                        <span class="nav-text">Qui sommes-nous</span>
-                        <span class="nav-underline"></span>
-                    </a>
-                </div>
-            </nav>
-            <div class="theme-toggle-wrapper">
-                <input type="checkbox" id="theme-toggle" class="theme-checkbox">
-                <label for="theme-toggle" class="theme-label">
-                    <span class="sun-icon">☀️</span>
-                    <span class="moon-icon">🌙</span>
-                    <div class="toggle-ball"></div>
-                </label>
-                <div class="gif-container">
-                    <img src="image_anime.gif" alt="Animation" class="gif-loader" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </header>
-    <main class="corps">
+{% extends "header.html" %}
+{% block title %}Defi 1 | Nuit Info{% endblock %}
+{% block content %}
         <div class="content-wrapper">
             <div class="hero-section">
                 <div class="defi-content">
@@ -103,42 +49,4 @@
                 </div>
             </div>
         </div>
-    </main>
-    <footer>
-        <div class="footer-logo-container">
-            <img src="unGroupeRandomImage.jpg" class="footer-logo" alt="Un Groupe Random Logo" loading="lazy">
-        </div>
-        <div class="footer-container">
-            <div class="footer-column footer-left">
-                <ul class="team-list">
-                    <li class="team-member">LALEURE Yoann</li>
-                    <li class="team-member">BENAISSE Mohamed</li>
-                    <li class="team-member">BOURDIOL Maxime</li>
-                    <li class="team-member">BRU Nolann</li>
-                    <li class="team-member">ETTARFAOUI Abdelrahni</li>
-                    <li class="team-member">FERREIRA Diego</li>
-                </ul>
-            </div>
-            <div class="footer-column footer-center">
-                <h2 class="footer-main-title animated-gradient">Un groupe Random</h2>
-                <p class="footer-year">Nuit de l'Info 2025</p>
-            </div>
-            <div class="footer-column footer-right">
-                <ul class="team-list">
-                    <li class="team-member">GABARRE CLAVERIA Santiago</li>
-                    <li class="team-member">GAUCHET Killian</li>
-                    <li class="team-member">KIRUPAKARAN Kirthigane</li>
-                    <li class="team-member">LUCAS Clément</li>
-                    <li class="team-member">OUAKAR Nour</li>
-                    <li class="team-member">SAUVAGE Savannah</li>
-                    <li class="team-member">TRANIER Malo</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Groupe Random - Tous droits réservés</p>
-        </div>
-    </footer>
-    <script src="script.js"></script>
-</body>
-</html>
+{% endblock %}

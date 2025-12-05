@@ -1,3 +1,4 @@
+{% extends "header.html" %}
 {% block title %}Connexion | Nuit Info{% endblock %}
 {% block content %}
     <style>
@@ -18,7 +19,7 @@
     </style>
         <div class="login-container">
             <h1 class="login-title">Connexion</h1>
-            <div class="error-message" id="error-message">Identifiant ou mot de passe incorrect</div>
+            <!-- <div class="error-message" id="error-message">Identifiant ou mot de passe incorrect</div> -->
             <form action="/connexion" method="POST">
                 <div class="form-group">
                     <label class="form-label" for="username">Email</label>
