@@ -1,0 +1,77 @@
+{% extends "header.html" %}
+{% block title %}Qui sommes nous? | Nuit Info{% endblock %}
+{% block content %}
+<style>
+        .about-container{max-width:900px;margin:60px auto;padding:50px;background:var(--bg-secondary);border-radius:30px;box-shadow:0 20px 60px var(--shadow-color);border:2px solid var(--accent-color)}
+        .about-title{font-size:2.8rem;font-weight:900;text-align:center;margin-bottom:40px;background:linear-gradient(135deg,var(--accent-color),#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .leader-section{text-align:center;margin-bottom:40px;padding:30px;background:linear-gradient(135deg,rgba(102,126,234,.1),rgba(118,75,162,.1));border-radius:20px;border:2px solid var(--accent-color)}
+        .leader-label{font-size:1.2rem;color:var(--text-secondary);margin-bottom:10px}
+        .leader-name{font-size:2rem;font-weight:800;color:var(--accent-color)}
+        .members-section{margin-bottom:40px}
+        .section-subtitle{font-size:1.5rem;font-weight:700;color:var(--accent-color);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+        .section-subtitle::before{content:'▸';font-size:1.3rem}
+        .members-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:15px}
+        .member-card{padding:15px 20px;background:var(--menu-bg);backdrop-filter:blur(10px);border-radius:12px;text-align:center;font-weight:600;color:var(--text-primary);transition:all .3s ease;border-left:3px solid var(--accent-color)}
+        .member-card:hover{transform:translateX(5px);box-shadow:0 8px 20px var(--shadow-color);background:var(--menu-hover)}
+        .defis-section{margin-top:40px}
+        .defi-card{margin-bottom:20px;padding:25px;background:var(--menu-bg);backdrop-filter:blur(10px);border-radius:15px;border-left:4px solid var(--accent-color);transition:all .3s ease}
+        .defi-card:hover{transform:translateX(5px);box-shadow:0 10px 30px var(--shadow-color)}
+        .defi-name{font-size:1.3rem;font-weight:700;color:var(--accent-color);margin-bottom:10px}
+        .defi-description{font-size:1rem;color:var(--text-secondary);line-height:1.6}
+    </style>
+        <div class="about-container">
+            <h1 class="about-title">Qui sommes-nous ?</h1>
+            
+            <div class="leader-section">
+                <p class="leader-label">Nous sommes le GroupeRandom avec pour leader</p>
+                <p class="leader-name">LALEURE Yoann</p>
+            </div>
+            
+            <div class="members-section">
+                <h2 class="section-subtitle">Les autres membres du groupe</h2>
+                <div class="members-grid">
+                    <div class="member-card">BENAISSE Mohamed</div>
+                    <div class="member-card">BOURDIOL Maxime</div>
+                    <div class="member-card">BRU Nolann</div>
+                    <div class="member-card">ETTARFAOUI Abdelrahni</div>
+                    <div class="member-card">FERREIRA Diego</div>
+                    <div class="member-card">GABARRE CLAVERIA Santiago</div>
+                    <div class="member-card">GAUCHET Killian</div>
+                    <div class="member-card">KIRUPAKARAN Kirthigane</div>
+                    <div class="member-card">LUCAS Clément</div>
+                    <div class="member-card">OUAKAR Nour</div>
+                    <div class="member-card">SAUVAGE Savannah</div>
+                    <div class="member-card">TRANIER Malo</div>
+                </div>
+            </div>
+            
+            <div class="defis-section">
+                <h2 class="section-subtitle">Les défis complémentaires que nous avons choisis</h2>
+                
+                <div class="defi-card">
+                    <p class="defi-name">Chat'bruti</p>
+                    <p class="defi-description">Faire un chatbot complètement à côté de la plaque.</p>
+                </div>
+                
+                <div class="defi-card">
+                    <p class="defi-name">Un logo animé</p>
+                    <p class="defi-description">Créer une animation du logo KLUB directement intégrable dans l'écran de chargement au lancement de l'application.</p>
+                </div>
+                
+                <div class="defi-card">
+                    <p class="defi-name">Sésame ouvre-toi !</p>
+                    <p class="defi-description">Le but est de concevoir une interface ou d'imaginer une méthode originale, amusante ou surprenante de s'identifier.</p>
+                </div>
+                
+                <div class="defi-card">
+                    <p class="defi-name">En trois dimensions</p>
+                    <p class="defi-description">Ajouter des modèles 3D dynamiques dans les pages du site.</p>
+                </div>
+                
+                <div class="defi-card">
+                    <p class="defi-name">Femmes et Informatique</p>
+                    <p class="defi-description">Mettre en valeur la contribution des femmes durant la Nuit de l'Info et sensibiliser à l'importance de la mixité dans les métiers du numérique.</p>
+                </div>
+            </div>
+        </div>
+{% endblock %}

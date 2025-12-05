@@ -109,5 +109,13 @@ def deconnexion():
     session.pop("user_id", None)
     return redirect(url_for("connexion"))
 
+@app.route("/defi1")
+def defi1():
+    return render_template("defi1.html")
+
+@app.route("/quisommesnous")
+def defi1():
+    return render_template("quisommesnous.html")
+
 if __name__ == "__main__":
     app.run()
